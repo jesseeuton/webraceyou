@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WBY.Web.Models
+namespace WBY.Domain.Models
 {
     [Table("Substance")]
     public class Substance

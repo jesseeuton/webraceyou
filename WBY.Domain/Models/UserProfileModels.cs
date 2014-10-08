@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WBY.Web.Models
+namespace WBY.Domain.Models
 {
     [Table("UserProfile")]
     public class UserProfile

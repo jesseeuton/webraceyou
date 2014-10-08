@@ -168,31 +168,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201410071740180_userprofile.cs" />
-    <Compile Include="Migrations\201410071740180_userprofile.Designer.cs">
-      <DependentUpon>201410071740180_userprofile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201410071928114_userprofilehistory.cs" />
-    <Compile Include="Migrations\201410071928114_userprofilehistory.Designer.cs">
-      <DependentUpon>201410071928114_userprofilehistory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201410071931564_substance.cs" />
-    <Compile Include="Migrations\201410071931564_substance.Designer.cs">
-      <DependentUpon>201410071931564_substance.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201410071937395_substancevehicle.cs" />
-    <Compile Include="Migrations\201410071937395_substancevehicle.Designer.cs">
-      <DependentUpon>201410071937395_substancevehicle.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201410072105490_ExtraUserInformation.cs" />
-    <Compile Include="Migrations\201410072105490_ExtraUserInformation.Designer.cs">
-      <DependentUpon>201410072105490_ExtraUserInformation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\Context.cs" />
-    <Compile Include="Models\SubstanceModels.cs" />
-    <Compile Include="Models\UserProfileModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -329,28 +304,20 @@
     <Folder Include="Areas\Dashboard\Models\" />
     <Folder Include="Areas\Dashboard\Views\Shared\" />
     <Folder Include="Filters\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201410071740180_userprofile.resx">
-      <DependentUpon>201410071740180_userprofile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201410071928114_userprofilehistory.resx">
-      <DependentUpon>201410071928114_userprofilehistory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201410071931564_substance.resx">
-      <DependentUpon>201410071931564_substance.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201410071937395_substancevehicle.resx">
-      <DependentUpon>201410071937395_substancevehicle.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201410072105490_ExtraUserInformation.resx">
-      <DependentUpon>201410072105490_ExtraUserInformation.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\WBY.Data\WBY.Data.csproj">
+      <Project>{33e23e7a-1304-4ab7-8270-3b90f80c3209}</Project>
+      <Name>WBY.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WBY.Domain\WBY.Domain.csproj">
+      <Project>{c33e9fa8-e865-42bf-bd42-977abfb76f7c}</Project>
+      <Name>WBY.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WBY.Services\WBY.Services.csproj">
       <Project>{dfccb76f-c2f5-4eb9-9201-a663d02965d2}</Project>
       <Name>WBY.Services</Name>

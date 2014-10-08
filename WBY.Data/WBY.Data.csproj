@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{33E23E7A-1304-4AB7-8270-3B90F80C3209}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WBY.Data</RootNamespace>
+    <AssemblyName>WBY.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Context.cs" />
+    <Compile Include="Migrations\201410071740180_userprofile.cs" />
+    <Compile Include="Migrations\201410071740180_userprofile.Designer.cs">
+      <DependentUpon>201410071740180_userprofile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201410071928114_userprofilehistory.cs" />
+    <Compile Include="Migrations\201410071928114_userprofilehistory.Designer.cs">
+      <DependentUpon>201410071928114_userprofilehistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201410071931564_substance.cs" />
+    <Compile Include="Migrations\201410071931564_substance.Designer.cs">
+      <DependentUpon>201410071931564_substance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201410071937395_substancevehicle.cs" />
+    <Compile Include="Migrations\201410071937395_substancevehicle.Designer.cs">
+      <DependentUpon>201410071937395_substancevehicle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201410072105490_ExtraUserInformation.cs" />
+    <Compile Include="Migrations\201410072105490_ExtraUserInformation.Designer.cs">
+      <DependentUpon>201410072105490_ExtraUserInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WBY.Domain\WBY.Domain.csproj">
+      <Project>{c33e9fa8-e865-42bf-bd42-977abfb76f7c}</Project>
+      <Name>WBY.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201410071740180_userprofile.resx">
+      <DependentUpon>201410071740180_userprofile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410071928114_userprofilehistory.resx">
+      <DependentUpon>201410071928114_userprofilehistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410071931564_substance.resx">
+      <DependentUpon>201410071931564_substance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410071937395_substancevehicle.resx">
+      <DependentUpon>201410071937395_substancevehicle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410072105490_ExtraUserInformation.resx">
+      <DependentUpon>201410072105490_ExtraUserInformation.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

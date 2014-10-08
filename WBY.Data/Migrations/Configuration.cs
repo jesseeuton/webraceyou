@@ -1,4 +1,5 @@
-using WBY.Web.Models;
+using WBY.Data;
+using WBY.Domain.Models;
 
 namespace WBY.Web.Migrations
 {
@@ -14,7 +15,7 @@ namespace WBY.Web.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Models.SecurityBasicsContext context)
+        protected override void Seed(SecurityBasicsContext context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -7,8 +7,9 @@ using System.Web.Mvc;
 using System.Web.Security;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
+using WBY.Data;
+using WBY.Domain.Models;
 using WebMatrix.WebData;
-using WBY.Web.Models;
 
 namespace WBY.Web.Controllers
 {
@@ -270,6 +271,7 @@ namespace WBY.Web.Controllers
             if (ModelState.IsValid)
             {
                 // Insert a new user into the database
+                //remove dependency on SecurityBasicsContext and pass this task off to the service
                 using (SecurityBasicsContext db = new SecurityBasicsContext())
                 {
                     UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
