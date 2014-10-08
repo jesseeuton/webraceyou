@@ -1,5 +1,0 @@
-c:\users\ewr7njq\documents\visual studio 2012\Projects\WeBraceYou\WBY.Web.Service.Test\bin\Debug\WBY.Services.Test.dll
-c:\users\ewr7njq\documents\visual studio 2012\Projects\WeBraceYou\WBY.Web.Service.Test\bin\Debug\WBY.Services.Test.pdb
-c:\users\ewr7njq\documents\visual studio 2012\Projects\WeBraceYou\WBY.Web.Service.Test\obj\Debug\WBY.Web.Services.Test.csprojResolveAssemblyReference.cache
-c:\users\ewr7njq\documents\visual studio 2012\Projects\WeBraceYou\WBY.Web.Service.Test\obj\Debug\WBY.Services.Test.dll
-c:\users\ewr7njq\documents\visual studio 2012\Projects\WeBraceYou\WBY.Web.Service.Test\obj\Debug\WBY.Services.Test.pdb
