@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - WBY</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        
+        <!-- Bootstrap core CSS -->
+        <link href="~/Content/css/bootstrap.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <!--<link href="~/Content/css/jumbotron-narrow.css" rel="stylesheet">-->
+        
+        <script data-main="scripts/main" src="~/scripts/require.js"></script>
+
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <div class="container">
+            <div class="header" style="padding-bottom: 10px">
+                <ul class="nav nav-pills pull-right">
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>Hello, @User.Identity.Name</li>
+                        <li>
+                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm"}))
+                            {
+                                @Html.AntiForgeryToken()
+                                <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                            }
+                        </li>
+                    } 
+                    <li class="active">@Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { id = "homeLink" })</li>
+                    @if (!Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Register\\Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>    
+                    }
+                </ul>
+                <h3 class="text-muted">We Brace You.</h3>
+            </div>
+
+            <div id="body">
+                <section>
+                    @RenderBody()
+                </section>
+            </div>
+            <div class="footer">
+                @*<p>&copy; Ooton Corporation.</p>*@
+            </div>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+
+        <script type="text/javascript">
+            function setActiveTab()
+            {
+                if ("@ViewBag.AreaId" === "home") {
+                    $('#homeLink').closest("li").siblings().removeClass("active");
+                    $('#homeLink').closest("li").addClass("active");
+                }
+                else if ("@ViewBag.AreaId" === "about") {
+                    $('#aboutLink').closest("li").siblings().removeClass("active");
+                    $('#aboutLink').closest("li").addClass("active");
+                }
+                else if ("@ViewBag.AreaId" === "contact") {
+                    $('#contactLink').closest("li").siblings().removeClass("active");
+                    $('#contactLink').closest("li").addClass("active");
+                }
+                else if ("@ViewBag.AreaId" === "login") {
+                    $('#loginLink').closest("li").siblings().removeClass("active");
+                    $('#loginLink').closest("li").addClass("active");
+                } else {
+                    $('#homeLink').closest("li").siblings().removeClass("active");
+                    $('#homeLink').closest("li").addClass("active");
+                }
+            }
+
+            $(document).ready(function () {
+
+                setActiveTab();
+            });
+        </script>
+    </body>
+</html>

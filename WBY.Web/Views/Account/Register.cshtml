@@ -1,0 +1,24 @@
+﻿@model WBY.Web.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+    ViewBag.AreaId = "login";
+}
+
+<div class="container">
+@using (Html.BeginForm("Register", "Account", null, FormMethod.Post, new { @class="form-signin"})) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <h4 class="form-signin-heading">Register</h4>
+    @Html.TextBoxFor(m => m.UserName, new { @class="form-control", @placeholder="Email", type="email", required="true", autofocus="true", style="margin-bottom: 5px;"})
+
+    @Html.TextBoxFor(m => m.Password, new { @class="form-control", @placeholder="Password", type="password", style="margin-bottom: 5px;", required="true"})
+
+    @Html.TextBoxFor(m => m.ConfirmPassword, new { @class="form-control", @placeholder="Confirm Password", type="password", required="true"})
+
+    <input type="submit" value="Register" class="btn btn-info btn-block" />
+}
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

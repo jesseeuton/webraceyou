@@ -1,0 +1,29 @@
+﻿@model WBY.Web.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+    ViewBag.AreaId = "login";
+}
+
+
+<div class="container">
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl}, FormMethod.Post, new { @class="form-signin"})) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <h4 class="form-signin-heading">Sign in below.</h4>
+    @Html.TextBoxFor(m => m.UserName, new {@class="form-control", type="email", placeholder="Email", required="true", autofocus="true", style="margin-bottom: 5px;"})
+    @Html.TextBoxFor(m => m.Password, new {@class="form-control", type="password", placeholder="Password"})
+    <button class="btn btn-info btn-block" type="submit">Sign in</button>
+    <h5 class="form-signin-heading">New?  Take a minute to @Html.ActionLink("Register", "Register", null, new { @class="text-success"})</h5>
+    }
+    <div class="social" id="socialLoginForm">
+        <h2>Use another service to log in.</h2>
+        @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
