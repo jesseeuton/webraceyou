@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using WBY.Web.ViewModels;
 
-namespace WBY.Servicess.Home
+namespace WBY.Services.Home
 {
     public class HomeService : IHomeService
     {

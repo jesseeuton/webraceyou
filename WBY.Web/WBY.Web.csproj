@@ -350,6 +350,12 @@
       <DependentUpon>201410072105490_ExtraUserInformation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WBY.Services\WBY.Services.csproj">
+      <Project>{dfccb76f-c2f5-4eb9-9201-a663d02965d2}</Project>
+      <Name>WBY.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -1,4 +1,4 @@
-﻿namespace WBY.Servicess.Account
+﻿namespace WBY.Services.Account
 {
     public interface IAccountService
     {

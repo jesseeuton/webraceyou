@@ -1,6 +1,6 @@
 ﻿using WBY.Web.ViewModels;
 
-namespace WBY.Servicess.Home
+namespace WBY.Services.Home
 {
     public interface IHomeService
     {
