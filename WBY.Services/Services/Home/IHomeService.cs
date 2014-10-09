@@ -1,4 +1,4 @@
-﻿using WBY.Web.ViewModels;
+﻿using WBY.Domain.ViewModels;
 
 namespace WBY.Services.Home
 {

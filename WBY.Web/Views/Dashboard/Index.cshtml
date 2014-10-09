@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Dashboard - We Brace You";
+    
+}
+<div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+            
+            <li class="active">@Html.ActionLink("Overview", "Overview", "Dashboard")</li>
+            <li>@Html.ActionLink("Substances", "Substances", "Dashboard")</li>
+            <li>@Html.ActionLink("Settings", "Settings", "Dashboard")</li>
+            <li>@Html.ActionLink("Support", "Support", "Dashboard")</li>
+        </ul>
+    </div>
+    <div id="dashboardContainer">
+        @*load the appropriate partial view*@
+        @{ Html.RenderPartial("_Overview"); }    
+    </div>
+    
+</div>
+
+
+@section Scripts {
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('.nav-sidebar li a').click(function (e) {
+            e.preventDefault();
+            var $self = $(this);
+            $self.closest("li").siblings().removeClass("active");
+            $self.closest("li").addClass("active");
+
+            //load our partial view into the container
+            $.get(
+                $self.attr("href"),
+                function(data) {
+                    $("#dashboardContainer").html(data);
+                }
+            );
+            //get the view to insert into the container.
+            //call our controller and get back the correct partial view
+        });
+
+        @*function setActiveTab() {
+            if ("@ViewBag.AreaId" === "home") {
+                $('.nav .nav-sidebar').closest("li").siblings().removeClass("active");
+                $('#homeLink').closest("li").addClass("active");
+            }
+            else if ("@ViewBag.AreaId" === "about") {
+                    $('#aboutLink').closest("li").siblings().removeClass("active");
+                    $('#aboutLink').closest("li").addClass("active");
+                }
+                else if ("@ViewBag.AreaId" === "contact") {
+                    $('#contactLink').closest("li").siblings().removeClass("active");
+                    $('#contactLink').closest("li").addClass("active");
+                }
+                else if ("@ViewBag.AreaId" === "login") {
+                    $('#loginLink').closest("li").siblings().removeClass("active");
+                    $('#loginLink').closest("li").addClass("active");
+                } else {
+                    $('#homeLink').closest("li").siblings().removeClass("active");
+                    $('#homeLink').closest("li").addClass("active");
+                }
+        }*@
+    });   
+</script>
+}

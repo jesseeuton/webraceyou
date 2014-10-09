@@ -5,6 +5,7 @@ using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Web.UI.WebControls;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WBY.Data;
@@ -36,7 +37,7 @@ namespace WBY.Web.Controllers
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
-                return RedirectToLocal(returnUrl);
+                return RedirectToDashboard();
             }
 
             // If we got this far, something failed, redisplay form
@@ -80,7 +81,7 @@ namespace WBY.Web.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToDashboard();
                 }
                 catch (MembershipCreateUserException e)
                 {
@@ -225,14 +226,14 @@ namespace WBY.Web.Controllers
 
             if (OAuthWebSecurity.Login(result.Provider, result.ProviderUserId, createPersistentCookie: false))
             {
-                return RedirectToLocal(returnUrl);
+                return RedirectToDashboard();
             }
 
             if (User.Identity.IsAuthenticated)
             {
                 // If the current user is logged in add the new account
                 OAuthWebSecurity.CreateOrUpdateAccount(result.Provider, result.ProviderUserId, User.Identity.Name);
-                return RedirectToLocal(returnUrl);
+                return RedirectToDashboard();
             }
             else
             {
@@ -279,13 +280,24 @@ namespace WBY.Web.Controllers
                     if (user == null)
                     {
                         // Insert name into the profile table
-                        db.UserProfiles.Add(new UserProfile { UserName = model.UserName });
+                        UserProfile newUser = db.UserProfiles.Add(new UserProfile { UserName = model.UserName });
+                        db.SaveChanges();
+
+                        //add extra information that we got back from oAuth login
+                        db.ExternalUsers.Add(new ExtraUserInformation
+                        {
+                            UserId = newUser.Id,
+                            FullName = model.FullName,
+                            Link = model.Link
+                        });
+
+                        //Save the extra information
                         db.SaveChanges();
 
                         OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);
                         OAuthWebSecurity.Login(provider, providerUserId, createPersistentCookie: false);
 
-                        return RedirectToLocal(returnUrl);
+                        return RedirectToDashboard();
                     }
                     else
                     {
@@ -338,17 +350,23 @@ namespace WBY.Web.Controllers
         }
 
         #region Helpers
-        private ActionResult RedirectToLocal(string returnUrl)
+
+        private ActionResult RedirectToDashboard()
         {
-            if (Url.IsLocalUrl(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            return RedirectToAction("Index", "Dashboard");
         }
+
+        //private ActionResult RedirectToLocal(string returnUrl)
+        //{
+        //    if (Url.IsLocalUrl(returnUrl))
+        //    {
+        //        return Redirect(returnUrl);
+        //    }
+        //    else
+        //    {
+        //        return RedirectToAction("Index", "Home");
+        //    }
+        //}
 
         public enum ManageMessageId
         {
