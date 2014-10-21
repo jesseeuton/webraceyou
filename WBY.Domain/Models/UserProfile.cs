@@ -15,5 +15,6 @@ namespace WBY.Domain.Models
         
         public List<UserProfilePreference> Preferences { get; set; }
         public List<UserProfileHistory> History { get; set; } 
+        public List<UserSubstance> Substances { get; set; } 
     }
 }

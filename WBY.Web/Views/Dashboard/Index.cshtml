@@ -1,6 +1,5 @@
 ﻿@{
     ViewBag.Title = "Dashboard - We Brace You";
-    
 }
 <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
@@ -40,28 +39,6 @@
             //get the view to insert into the container.
             //call our controller and get back the correct partial view
         });
-
-        @*function setActiveTab() {
-            if ("@ViewBag.AreaId" === "home") {
-                $('.nav .nav-sidebar').closest("li").siblings().removeClass("active");
-                $('#homeLink').closest("li").addClass("active");
-            }
-            else if ("@ViewBag.AreaId" === "about") {
-                    $('#aboutLink').closest("li").siblings().removeClass("active");
-                    $('#aboutLink').closest("li").addClass("active");
-                }
-                else if ("@ViewBag.AreaId" === "contact") {
-                    $('#contactLink').closest("li").siblings().removeClass("active");
-                    $('#contactLink').closest("li").addClass("active");
-                }
-                else if ("@ViewBag.AreaId" === "login") {
-                    $('#loginLink').closest("li").siblings().removeClass("active");
-                    $('#loginLink').closest("li").addClass("active");
-                } else {
-                    $('#homeLink').closest("li").siblings().removeClass("active");
-                    $('#homeLink').closest("li").addClass("active");
-                }
-        }*@
     });   
 </script>
 }

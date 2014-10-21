@@ -273,7 +273,7 @@ namespace WBY.Web.Controllers
             {
                 // Insert a new user into the database
                 //remove dependency on SecurityBasicsContext and pass this task off to the service
-                using (SecurityBasicsContext db = new SecurityBasicsContext())
+                using (WbyContext db = new WbyContext())
                 {
                     UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
                     // Check if user already exists

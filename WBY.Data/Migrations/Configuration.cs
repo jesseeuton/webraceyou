@@ -8,16 +8,20 @@ namespace WBY.Web.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SecurityBasicsContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<WbyContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(SecurityBasicsContext context)
+        protected override void Seed(WbyContext context)
         {
             //  This method will be called after migrating to the latest version.
+
+            context.UserProfiles.AddOrUpdate(
+                u => u.UserName,
+                new UserProfile() { UserName="Admin"});
 
             context.Substances.AddOrUpdate(
                 s => s.Name,
@@ -26,13 +30,22 @@ namespace WBY.Web.Migrations
                 new Substance { Id = 3, Name = "Caffiene" }
             );
 
+            context.SubstanceUnits.AddOrUpdate(
+                su => su.Name,
+                new SubstanceUnit() {Id=1, Name="Oz"},
+                new SubstanceUnit() {Id=2, Name="Bottle"},
+                new SubstanceUnit() {Id=3, Name="6-Pack"},
+                new SubstanceUnit() {Id=4, Name="Can"},
+                new SubstanceUnit() {Id=5, Name="Case"}
+            );
+
             context.SubstanceVehicles.AddOrUpdate(
                 sv => sv.Name,
                 new SubstanceVehicle() { Id = 1, Name = "Beer", SubstanceId = 1},
-                new SubstanceVehicle() { Id = 2, Name = "Wine", SubstanceId = 1 },
-                new SubstanceVehicle() { Id = 3, Name = "Tequila", SubstanceId = 1 },
-                new SubstanceVehicle() { Id = 4, Name = "Vodka", SubstanceId = 1 },
-                new SubstanceVehicle() { Id = 5, Name = "Whiskey", SubstanceId = 1 },
+                new SubstanceVehicle() { Id = 2, Name = "Wine", SubstanceId = 1},
+                new SubstanceVehicle() { Id = 3, Name = "Tequila", SubstanceId = 1},
+                new SubstanceVehicle() { Id = 4, Name = "Vodka", SubstanceId = 1},
+                new SubstanceVehicle() { Id = 5, Name = "Whiskey", SubstanceId = 1},
                 new SubstanceVehicle() { Id = 6, Name = "Rum", SubstanceId = 1 },
                 new SubstanceVehicle() { Id = 7, Name = "Gin", SubstanceId = 1 },
                 new SubstanceVehicle() { Id = 8, Name = "Cigarettes", SubstanceId = 2 },
@@ -43,7 +56,7 @@ namespace WBY.Web.Migrations
                 new SubstanceVehicle() { Id = 13, Name = "Coffee", SubstanceId = 3 },
                 new SubstanceVehicle() { Id = 14, Name = "Tea", SubstanceId = 3 },
                 new SubstanceVehicle() { Id = 15, Name = "Energy Drink", SubstanceId = 3 },
-                new SubstanceVehicle() { Id = 16, Name = "Pills", SubstanceId = 3 }
+                new SubstanceVehicle() { Id = 16, Name = "Pill", SubstanceId = 3 }
             );
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

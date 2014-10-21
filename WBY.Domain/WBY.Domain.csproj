@@ -46,6 +46,7 @@
     <Compile Include="Models\SubstanceVehicle.cs" />
     <Compile Include="Models\UserProfileHistory.cs" />
     <Compile Include="Models\UserProfilePreference.cs" />
+    <Compile Include="Models\UserSubstance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Substance.cs" />
     <Compile Include="Models\UserProfile.cs" />

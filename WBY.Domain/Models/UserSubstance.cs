@@ -8,33 +8,23 @@ using System.Threading.Tasks;
 
 namespace WBY.Domain.Models
 {
-    [Table("SubstanceVehicle")]
-    public class SubstanceVehicle
+    [Table("UserSubstance")]
+    public class UserSubstance
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
-        public string Name { get; set; }
-
-        [Required]
-        public decimal CostPerUnit { get; set; }
+        public int UserProfileId { get; set; }
 
         [Required]
         public int SubstanceId { get; set; }
 
+        [ForeignKey("UserProfileId")]
+        public UserProfile UserProfile { get; set; }
+        
         [ForeignKey("SubstanceId")]
         public Substance Substance { get; set; }
-    }
-
-    [Table("SubstanceUnit")]
-    public class SubstanceUnit
-    {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Id { get; set; }
-
-        public string Name { get; set; }
     }
 }

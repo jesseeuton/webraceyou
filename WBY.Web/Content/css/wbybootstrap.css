@@ -1,0 +1,44 @@
+﻿.nav > li > form > a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+.nav > li > form > a:hover,
+.nav > li > form > a:focus {
+  text-decoration: none;
+  background-color: #e6e6e6;
+}
+.navbar-nav > li > form > a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 21px;
+}
+
+@media (max-width: 767px) {
+.navbar-nav > li > form > a {
+    padding-top: 14.5px;
+    padding-bottom: 14.5px;
+  }
+}
+  
+.navbar-default .navbar-nav > li > form > a {
+  color: #ffffff;
+}
+
+.navbar-default .navbar-nav > li > form > a:hover,
+.navbar-default .navbar-nav > li > form > a:focus {
+  color: #ffffff;
+  background-color: #090909;
+}
+.navbar-default .navbar-nav > .active > form > a,
+.navbar-default .navbar-nav > .active > form > a:hover,
+.navbar-default .navbar-nav > .active > form > a:focus {
+  color: #ffffff;
+  background-color: #090909;
+}
+.navbar-default .navbar-nav > .disabled > form > a,
+.navbar-default .navbar-nav > .disabled > form > a:hover,
+.navbar-default .navbar-nav > .disabled > form > a:focus {
+  color: #cccccc;
+  background-color: transparent;
+}

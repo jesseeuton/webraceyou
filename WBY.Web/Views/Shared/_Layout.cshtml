@@ -11,8 +11,8 @@
         
         <link href="~/Content/css/dashboard.css" rel="stylesheet">
         
-        @*<script data-main="scripts/main" src="~/scripts/require.js"></script>*@
-
+        <link href="~/Content/css/wbybootstrap.css" rel="stylesheet">
+        
         @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
@@ -25,7 +25,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         @if (Request.IsAuthenticated)
                         {
-                            <li>Hello, @User.Identity.Name</li>
+                            <li><a href="#">Welcome, @User.Identity.Name&nbsp;&nbsp;</a></li>
                             <li>
                                 @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm"}))
                                 {
@@ -36,8 +36,7 @@
                         } 
                         @if (!Request.IsAuthenticated)
                         {
-                            <li class="active">@Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { id = "homeLink" })</li>
-                            <li>@Html.ActionLink("Register\\Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>    
+                            <li>@Html.ActionLink("Register\\Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
                         }
                     </ul>
                 </div>
@@ -75,7 +74,6 @@
             }
 
             $(document).ready(function () {
-
                 setActiveTab();
             });
         </script>
